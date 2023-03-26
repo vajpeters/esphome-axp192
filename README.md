@@ -1,4 +1,4 @@
-# Pionizer AXP192 Component
+# AXP192 Component
 
 AXP192 power management library for ESPHome adopted for a custom ESPHome library for AI and related edge devices.
 
@@ -83,7 +83,7 @@ display:
 
 ## Credits and Disclaimers
 
-This library is built on prior work published by @M5Stack as well as individual contributors like @airy10, @apolselli, @abmantis, @geiseri, @martydingo, @gonzalop, @shish, @cmet7, @JensGuckenbiehl, @leoedin, @rolloo, @paulchilton amongst others.
+This library is built on prior work published by @M5Stack as well as individual contributors like @airy10, @apolselli, @abmantis, @geiseri, @martydingo, @gonzalop, @shish, @cmet7, @JensGuckenbiehl, @leoedin, @rolloo, @paulchilton, @pionizer amongst others.
 
 ## License
 
