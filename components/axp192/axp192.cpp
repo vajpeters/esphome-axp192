@@ -109,8 +109,8 @@ namespace esphome
             // Set ADC to All Enable
             Write1Byte(0x82, 0xff);
 
-            // Bat charge voltage to 4.2, Current 100MA
-            Write1Byte(0x33, 0xc0);
+            // Bat charge voltage to 4.2, Current 450MA
+            Write1Byte(0x33, 0xc5);
 
             // Depending on configuration enable LDO2, LDO3, DCDC1, DCDC3.
             uint8_t buf = (Read8bit(0x12) & 0xef) | 0x4D;
