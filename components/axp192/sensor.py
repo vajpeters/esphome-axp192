@@ -2,13 +2,13 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import i2c, sensor
 from esphome.const import CONF_ID,\
-    CONF_BATTERY_LEVEL, CONF_BRIGHTNESS, UNIT_PERCENT, ICON_BATTERY, CONF_MODEL
-
+    CONF_BATTERY_LEVEL, CONF_BRIGHTNESS, UNIT_PERCENT, ICON_BATTERY, CONF_MODEL, CONF_CURRENT
 DEPENDENCIES = ['i2c']
 
 axp192_ns = cg.esphome_ns.namespace('axp192')
 AXP192Component = axp192_ns.class_('AXP192Component', cg.PollingComponent, i2c.I2CDevice)
 AXP192Model = axp192_ns.enum("AXP192Model")
+AXP192Current = axp192_ns.enum("AXP192Current")
 
 MODELS = {
     "M5CORE2": AXP192Model.AXP192_M5CORE2,
@@ -16,7 +16,19 @@ MODELS = {
     "M5TOUGH": AXP192Model.AXP192_M5TOUGH,
 }
 
+CURRENT = {
+     "CURRENT_100MA": AXP192Model.CURRENT_100MA,
+     "CURRENT_190MA": AXP192Model.CURRENT_190MA,
+     "CURRENT_280MA": AXP192Model.CURRENT_280MA,
+     "CURRENT_360MA": AXP192Model.CURRENT_360MA,
+     "CURRENT_450MA": AXP192Model.CURRENT_450MA,
+     "CURRENT_550MA": AXP192Model.CURRENT_550MA,
+     "CURRENT_630MA": AXP192Model.CURRENT_630MA,
+     "CURRENT_700MA": AXP192Model.CURRENT_700MA,
+}
+
 AXP192_MODEL = cv.enum(MODELS, upper=True, space="_")
+AXP192_CURRENT = cv.enum(CURRENT, upper=True, space="_")
 
 CONFIG_SCHEMA = cv.Schema({
     cv.GenerateID(): cv.declare_id(AXP192Component),
@@ -27,7 +39,8 @@ CONFIG_SCHEMA = cv.Schema({
             accuracy_decimals=1,
             icon=ICON_BATTERY,
         ),
-    cv.Optional(CONF_BRIGHTNESS, default=1.0): cv.percentage, 
+    cv.Optional(CONF_BRIGHTNESS, default=1.0): cv.percentage,
+    cv.Optional(CONF_CURRENT, default="CURRENT_100MA"): AXP192_CURRENT,
 }).extend(cv.polling_component_schema('60s')).extend(i2c.i2c_device_schema(0x77))
 
 
