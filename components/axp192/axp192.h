@@ -16,20 +16,23 @@ namespace esphome
             AXP192_M5CORE2,
             AXP192_M5TOUGH,
         };
+        
+        enum AXP192Current
+        {
+            CURRENT_100MA = 0,  //(0b0000)
+            CURRENT_190MA,      //(0b0001)
+            CURRENT_280MA,      //(0b0010)
+            CURRENT_360MA,      //(0b0011)
+            CURRENT_450MA,      //(0b0100)
+            CURRENT_550MA,      //(0b0101)
+            CURRENT_630MA,      //(0b0110)
+            CURRENT_700MA,      //(0b0111)
+        };
 
 #define SLEEP_MSEC(us) (((uint64_t)us) * 1000L)
 #define SLEEP_SEC(us) (((uint64_t)us) * 1000000L)
 #define SLEEP_MIN(us) (((uint64_t)us) * 60L * 1000000L)
 #define SLEEP_HR(us) (((uint64_t)us) * 60L * 60L * 1000000L)
-
-#define CURRENT_100MA (0b0000)
-#define CURRENT_190MA (0b0001)
-#define CURRENT_280MA (0b0010)
-#define CURRENT_360MA (0b0011)
-#define CURRENT_450MA (0b0100)
-#define CURRENT_550MA (0b0101)
-#define CURRENT_630MA (0b0110)
-#define CURRENT_700MA (0b0111)
 
         class AXP192Component : public PollingComponent, public i2c::I2CDevice
         {
