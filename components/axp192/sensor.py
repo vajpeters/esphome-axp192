@@ -2,7 +2,7 @@ import esphome.codegen as cg
 import esphome.config_validation as cv
 from esphome.components import i2c, sensor
 from esphome.const import CONF_ID,\
-    CONF_BATTERY_LEVEL, CONF_BRIGHTNESS, UNIT_PERCENT, ICON_BATTERY, CONF_MODEL, CONF_BATTERY_CURRENT
+    CONF_BATTERY_LEVEL, CONF_BRIGHTNESS, UNIT_PERCENT, ICON_BATTERY, CONF_MODEL
 
 DEPENDENCIES = ['i2c']
 
@@ -27,7 +27,7 @@ CONFIG_SCHEMA = cv.Schema({
             accuracy_decimals=1,
             icon=ICON_BATTERY,
         ),
-    cv.Optional(CONF_BRIGHTNESS, default=1.0): cv.percentage,
+    cv.Optional(CONF_BRIGHTNESS, default=1.0): cv.percentage, 
 }).extend(cv.polling_component_schema('60s')).extend(i2c.i2c_device_schema(0x77))
 
 
